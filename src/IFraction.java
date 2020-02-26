@@ -33,9 +33,4 @@ public interface IFraction {
      */
     IFraction dividedBy(IFraction other);
 
-    /**
-     * @param other fraction
-     * @return new instance of Ifraction simplified to the lowest possible numbers
-     */
-    public IFraction trimFraction (IFraction other);
 }

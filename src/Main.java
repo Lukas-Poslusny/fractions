@@ -20,12 +20,11 @@ public class Main {
         IFraction subtract = fr.minus(fr2);
         IFraction multiply = fr.times(fr2);
         IFraction divide = fr.dividedBy(fr2);
-        IFraction normalise = fr.trimFraction(fr2);
+        
 
         System.out.println("Added: \n" + add.getNumerator() + "\n———\n" + add.getDenominator() + "\n");
         System.out.println("Subtracted: \n" + subtract.getNumerator() + "\n———\n" + subtract.getDenominator() + "\n");
         System.out.println("Multiplied: \n" + multiply.getNumerator() + "\n———\n" + multiply.getDenominator() + "\n");
         System.out.println("Divided: \n" + divide.getNumerator() + "\n———\n" + divide.getDenominator() + "\n");
-        System.out.println("Normalised: \n" + normalise.getNumerator() + "\n———\n" + normalise.getDenominator() + "\n");
     }
 }
