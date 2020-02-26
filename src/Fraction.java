@@ -34,14 +34,10 @@ public class Fraction implements IFraction {
      */
     @Override
     public IFraction add(IFraction other) {
-        int numerator1 = numerator;
-        int numerator2 = other.getNumerator();
-        int denominator1 = denominator;
-        int denominator2 = other.getDenominator();
 
-        int denominatorResult = denominator1 * denominator2;
-        int numeratorResult = (denominator2 * numerator1) + (denominator1 * numerator2);
-        
+        int denominatorResult = denominator * other.getDenominator();
+        int numeratorResult = (other.getDenominator() * numerator) + (denominator * other.getNumerator());
+
         for (int i = numeratorResult; i > 1; i--) {
             if (numeratorResult % i == 0 && denominatorResult % i == 0) {
                 numeratorResult = numeratorResult / i;
@@ -58,13 +54,9 @@ public class Fraction implements IFraction {
      */
     @Override
     public IFraction minus(IFraction other) {
-        int numerator1 = numerator;
-        int numerator2 = other.getNumerator();
-        int denominator1 = denominator;
-        int denominator2 = other.getDenominator();
 
-        int denominatorResult = denominator1 * denominator2;
-        int numeratorResult = numerator1*denominator2 - numerator2*denominator1;
+        int denominatorResult = denominator * other.getDenominator();
+        int numeratorResult = numerator * other.getDenominator() - other.getNumerator() * denominator;
 
         for (int i = numeratorResult; i > 1; i--) {
             if (numeratorResult % i == 0 && denominatorResult % i == 0) {
@@ -82,13 +74,9 @@ public class Fraction implements IFraction {
      */
     @Override
     public IFraction times(IFraction other) {
-        int numerator1 = numerator;
-        int numerator2 = other.getNumerator();
-        int denominator1 = denominator;
-        int denominator2 = other.getDenominator();
 
-        int denominatorResult = denominator1 * denominator2;
-        int numeratorResult = numerator1 * numerator2;
+        int denominatorResult = denominator * other.getDenominator();
+        int numeratorResult = numerator * other.getNumerator();
 
         for (int i = numeratorResult; i > 1; i--) {
             if (numeratorResult % i == 0 && denominatorResult % i == 0) {
@@ -106,13 +94,9 @@ public class Fraction implements IFraction {
      */
     @Override
     public IFraction dividedBy(IFraction other) {
-        int numerator1 = numerator;
-        int numerator2 = other.getNumerator();
-        int denominator1 = denominator;
-        int denominator2 = other.getDenominator();
 
-        int denominatorResult = denominator1 * numerator2;
-        int numeratorResult = denominator2 * numerator1;
+        int denominatorResult = denominator * other.getNumerator();
+        int numeratorResult = other.getDenominator() * numerator;
 
         for (int i = numeratorResult; i > 1; i--) {
             if (numeratorResult % i == 0 && denominatorResult % i == 0) {
