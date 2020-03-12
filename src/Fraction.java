@@ -6,6 +6,9 @@ public class Fraction implements IFraction {
 
     public Integer numerator;
     public Integer denominator;
+    public Integer numeratorResult;
+    public Integer denominatorResult;
+
 
     public Fraction(Integer numerator, Integer denominator) {
         this.numerator = numerator;
@@ -38,14 +41,7 @@ public class Fraction implements IFraction {
         int denominatorResult = denominator * other.getDenominator();
         int numeratorResult = (other.getDenominator() * numerator) + (denominator * other.getNumerator());
 
-        for (int i = numeratorResult; i > 1; i--) {
-            if (numeratorResult % i == 0 && denominatorResult % i == 0) {
-                numeratorResult = numeratorResult / i;
-                denominatorResult = denominatorResult / i;
-            }
-        }
-
-        return new Fraction(numeratorResult, denominatorResult);
+        return new Fraction(trimNumerator(numeratorResult, denominatorResult), trimDenominator(numeratorResult, denominatorResult));
     };
 
     /**
@@ -58,14 +54,7 @@ public class Fraction implements IFraction {
         int denominatorResult = denominator * other.getDenominator();
         int numeratorResult = numerator * other.getDenominator() - other.getNumerator() * denominator;
 
-        for (int i = numeratorResult; i > 1; i--) {
-            if (numeratorResult % i == 0 && denominatorResult % i == 0) {
-                numeratorResult = numeratorResult / i;
-                denominatorResult = denominatorResult / i;
-            }
-        }
-
-        return new Fraction(numeratorResult, denominatorResult);
+        return new Fraction(trimNumerator(numeratorResult, denominatorResult), trimDenominator(numeratorResult, denominatorResult));
     };
 
     /**
@@ -78,14 +67,7 @@ public class Fraction implements IFraction {
         int denominatorResult = denominator * other.getDenominator();
         int numeratorResult = numerator * other.getNumerator();
 
-        for (int i = numeratorResult; i > 1; i--) {
-            if (numeratorResult % i == 0 && denominatorResult % i == 0) {
-                numeratorResult = numeratorResult / i;
-                denominatorResult = denominatorResult / i;
-            }
-        }
-
-        return new Fraction(numeratorResult, denominatorResult);
+        return new Fraction(trimNumerator(numeratorResult, denominatorResult), trimDenominator(numeratorResult, denominatorResult));
     };
 
     /**
@@ -98,14 +80,24 @@ public class Fraction implements IFraction {
         int denominatorResult = denominator * other.getNumerator();
         int numeratorResult = other.getDenominator() * numerator;
 
-        for (int i = numeratorResult; i > 1; i--) {
-            if (numeratorResult % i == 0 && denominatorResult % i == 0) {
-                numeratorResult = numeratorResult / i;
-                denominatorResult = denominatorResult / i;
-            }
-        }
-
-        return new Fraction(numeratorResult, denominatorResult);
+        return new Fraction(trimNumerator(numeratorResult, denominatorResult), trimDenominator(numeratorResult, denominatorResult));
     };
 
+    public int trimNumerator(int numerator, int denominator) {
+        for (int i = numerator; i > 1; i--) {
+            if (numerator % i == 0 && denominator % i == 0) {
+                numeratorResult = numerator / i;
+            }
+        }
+        return numeratorResult;
+    }
+
+    public int trimDenominator(int numerator, int denominator) {
+        for (int i = numerator; i > 1; i--) {
+            if (numerator % i == 0 && denominator % i == 0) {
+                denominatorResult = denominator / i;
+            }
+        }
+        return denominatorResult;
+    }
 }
